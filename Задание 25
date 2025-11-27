@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    int n;
+    cout << "Введите число n: ";
+    cin >> n;
+    vector<int> dp(n + 1, 0);
+    for (int x = 1; x * x <= n; x++) {
+        int sq = x * x;
+        for (int i = sq; i <= n; i++) {
+            dp[i] += dp[i - sq];
+        }
+    }
+    cout << "Количество способов: " << dp[n];
+    return 0;
+}
+
