@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Введите число n: ";
+    cin >> n;
+
+    vector<int> arr(n + 1, 0);
+    arr[0] = 1; 
+
+    for (int x = 1; x * x <= n; x++) {
+        int res = x * x;
+        for (int i = res; i <= n; i++) {
+            arr[i] += arr[i - res];
+        }
+    }
+
+    cout << "Количество способов: " << arr[n];
+    return 0;
+}
